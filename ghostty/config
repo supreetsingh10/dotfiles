@@ -48,25 +48,26 @@ command = /bin/zsh
 
 shell-integration = zsh
 
-
 #keybinds
-keybind = ctrl+shift+9=new_split:right
-keybind = ctrl+shift+0=new_split:down
 keybind = ctrl+shift+k=goto_split:up
 keybind = ctrl+shift+j=goto_split:down
 keybind = ctrl+shift+l=goto_split:left
 keybind = ctrl+shift+h=goto_split:right
 keybind = ctrl+shift+n=goto_split:next
 keybind = ctrl+shift+p=goto_split:previous
+
 keybind = performable:ctrl+c=copy_to_clipboard
+
 keybind = ctrl+a>n=new_window
 keybind = ctrl+t>n=new_tab
+keybind = ctrl+shift+9=new_split:right
+keybind = ctrl+shift+0=new_split:down
+
 keybind = ctrl+shift+down=jump_to_prompt:1
 keybind = ctrl+shift+up=jump_to_prompt:-1
 
-
 # Form
-theme = "/usr/share/ghostty/themes/rose-pine"
+theme = "/usr/share/ghostty/themes/tokyonight_night"
 font-family = Fira Code SemiBold
 
 window-padding-x = 2
@@ -75,5 +76,5 @@ font-size = 10
 bold-is-bright = true
 
 background-blur = true
-background-opacity = 0.8
-unfocused-split-opacity = 0.6
+background-opacity = 0.90
+unfocused-split-opacity = 0.80
