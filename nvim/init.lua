@@ -282,140 +282,83 @@ require("lazy").setup({
 	-- See `:help gitsigns` to understand what the configuration keys do
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
-		-- opts = {
-		-- 	signs = {
-		-- 		add = { text = "+" },
-		-- 		change = { text = "~" },
-		-- 		delete = { text = "_" },
-		-- 		topdelete = { text = "‾" },
-		-- 		changedelete = { text = "~" },
-		-- 	},
-		-- 	signs_staged = {
-		-- 		add = { text = "┃" },
-		-- 		change = { text = "┃" },
-		-- 		delete = { text = "_" },
-		-- 		topdelete = { text = "‾" },
-		-- 		changedelete = { text = "~" },
-		-- 		untracked = { text = "┆" },
-		-- 	},
-		-- },
+		opts = {
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+		},
 	},
-	require("gitsigns").setup({
-		signs = {
-			add = { text = "┃" },
-			change = { text = "┃" },
-			delete = { text = "_" },
-			topdelete = { text = "‾" },
-			changedelete = { text = "~" },
-			untracked = { text = "┆" },
-		},
-		signs_staged = {
-			add = { text = "┃" },
-			change = { text = "┃" },
-			delete = { text = "_" },
-			topdelete = { text = "‾" },
-			changedelete = { text = "~" },
-			untracked = { text = "┆" },
-		},
-		signs_staged_enable = true,
-		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-		watch_gitdir = {
-			follow_files = true,
-		},
-		auto_attach = true,
-		attach_to_untracked = false,
-		current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-		current_line_blame_opts = {
-			virt_text = true,
-			virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-			delay = 1000,
-			ignore_whitespace = false,
-			virt_text_priority = 100,
-			use_focus = true,
-		},
-		current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
-		sign_priority = 6,
-		update_debounce = 100,
-		status_formatter = nil, -- Use default
-		max_file_length = 40000, -- Disable if file is longer than this (in lines)
-		preview_config = {
-			-- Options passed to nvim_open_win
-			style = "minimal",
-			relative = "cursor",
-			row = 0,
-			col = 1,
-		},
-	})(
-		-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-		--
-		-- This is often very useful to both group configuration, as well as handle
-		-- lazy loading plugins that don't need to be loaded immediately at startup.
-		--
-		-- For example, in the following configuration, we use:
-		--  event = 'VimEnter'
-		--
-		-- which loads which-key before all the UI elements are loaded. Events can be
-		-- normal autocommands events (`:help autocmd-events`).
-		--
-		-- Then, because we use the `opts` key (recommended), the configuration runs
-		-- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-		{ -- Useful plugin to show you pending keybinds.
-			"folke/which-key.nvim",
-			event = "VimEnter", -- Sets the loading event to 'VimEnter'
-			opts = {
-				-- delay between pressing a key and opening which-key (milliseconds)
-				-- this setting is independent of vim.o.timeoutlen
-				delay = 0,
-				icons = {
-					-- set icon mappings to true if you have a Nerd Font
-					mappings = vim.g.have_nerd_font,
-					-- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-					-- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-					keys = vim.g.have_nerd_font and {} or {
-						Up = "<Up> ",
-						Down = "<Down> ",
-						Left = "<Left> ",
-						Right = "<Right> ",
-						C = "<C-…> ",
-						M = "<M-…> ",
-						D = "<D-…> ",
-						S = "<S-…> ",
-						CR = "<CR> ",
-						Esc = "<Esc> ",
-						ScrollWheelDown = "<ScrollWheelDown> ",
-						ScrollWheelUp = "<ScrollWheelUp> ",
-						NL = "<NL> ",
-						BS = "<BS> ",
-						Space = "<Space> ",
-						Tab = "<Tab> ",
-						F1 = "<F1>",
-						F2 = "<F2>",
-						F3 = "<F3>",
-						F4 = "<F4>",
-						F5 = "<F5>",
-						F6 = "<F6>",
-						F7 = "<F7>",
-						F8 = "<F8>",
-						F9 = "<F9>",
-						F10 = "<F10>",
-						F11 = "<F11>",
-						F12 = "<F12>",
-					},
-				},
+	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+	--
+	-- This is often very useful to both group configuration, as well as handle
+	-- lazy loading plugins that don't need to be loaded immediately at startup.
+	--
+	-- For example, in the following configuration, we use:
+	--  event = 'VimEnter'
+	--
+	-- which loads which-key before all the UI elements are loaded. Events can be
+	-- normal autocommands events (`:help autocmd-events`).
+	--
+	-- Then, because we use the `opts` key (recommended), the configuration runs
+	-- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-				-- Document existing key chains
-				spec = {
-					{ "<leader>s", group = "[S]earch" },
-					{ "<leader>t", group = "[T]oggle" },
-					{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+	{ -- Useful plugin to show you pending keybinds.
+		"folke/which-key.nvim",
+		event = "VimEnter", -- Sets the loading event to 'VimEnter'
+		opts = {
+			-- delay between pressing a key and opening which-key (milliseconds)
+			-- this setting is independent of vim.o.timeoutlen
+			delay = 0,
+			icons = {
+				-- set icon mappings to true if you have a Nerd Font
+				mappings = vim.g.have_nerd_font,
+				-- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+				-- default which-key.nvim defined Nerd Font icons, otherwise define a string table
+				keys = vim.g.have_nerd_font and {} or {
+					Up = "<Up> ",
+					Down = "<Down> ",
+					Left = "<Left> ",
+					Right = "<Right> ",
+					C = "<C-…> ",
+					M = "<M-…> ",
+					D = "<D-…> ",
+					S = "<S-…> ",
+					CR = "<CR> ",
+					Esc = "<Esc> ",
+					ScrollWheelDown = "<ScrollWheelDown> ",
+					ScrollWheelUp = "<ScrollWheelUp> ",
+					NL = "<NL> ",
+					BS = "<BS> ",
+					Space = "<Space> ",
+					Tab = "<Tab> ",
+					F1 = "<F1>",
+					F2 = "<F2>",
+					F3 = "<F3>",
+					F4 = "<F4>",
+					F5 = "<F5>",
+					F6 = "<F6>",
+					F7 = "<F7>",
+					F8 = "<F8>",
+					F9 = "<F9>",
+					F10 = "<F10>",
+					F11 = "<F11>",
+					F12 = "<F12>",
 				},
 			},
-		}
-	),
+
+			-- Document existing key chains
+			spec = {
+				{ "<leader>s", group = "[S]earch" },
+				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+			},
+		},
+	},
 
 	-- NOTE: Plugins can specify dependencies.
 	--
@@ -448,6 +391,7 @@ require("lazy").setup({
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
 			-- it can fuzzy find! It's more than just a "file finder", it can search
 			-- many different aspects of Neovim, your workspace, LSP, and more!
@@ -589,6 +533,7 @@ require("lazy").setup({
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 			--    function will be executed to configure the current buffer
+			--
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -606,6 +551,10 @@ require("lazy").setup({
 					--  Most Language Servers support renaming across files, etc.
 					map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
 
+					map("<leader>e", function()
+						vim.diagnostic.open_float(nil, { scope = "cursor" })
+					end, "Multiline error preview window")
+
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
 					map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
@@ -621,6 +570,10 @@ require("lazy").setup({
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
 					map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("grv", function()
+						vim.cmd.lsp_definitions()
+						vim.cmd.vsplit()
+					end, "[G]oto [D]efinition And Split")
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
@@ -1004,14 +957,14 @@ require("lazy").setup({
 				styles = {
 					comments = { italic = false }, -- Disable italics in comments
 				},
-				transparent = true,
+				--transparent = true,
 				lualine_bold = true,
 			})
 
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("retrobox")
 			vim.o.background = "dark"
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=italic")
